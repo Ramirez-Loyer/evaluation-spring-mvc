@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr" layout:decorate="layout"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security5">
+<head>
+    <meta charset="utf-8">
+    <title>Mes contacts</title>
+    <link href="../static/bootstrap.min.css" rel="stylesheet" th:href="@{css/bootstrap.min.css}">
+</head>
+
+<body>
+<div layout:fragment="content">
+
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Liste des contacts</div>
+                <table class="table">
+                    <tr>
+                        <th>Name</th>
+                        <th>Last name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Adress</th>
+                    </tr>
+                    <tr th:each="c:${listContacts}">
+                        <td th:text="${c.id}"></td>
+                        <td th:text="${c.name}"></td>
+                        <td th:text="${c.lastName}"></td>
+                        <td th:text="${c.email}"></td>
+                        <td th:text="${c.phone}"></td>
+                        <td th:text="${c.address}"></td>
+                    </tr>
+                </table>
+                <ul class="nav nav-pills">
+                    <li th:class="${currentPage==status.index}?'active':''" th:each="page, status:${pages}">
+                        <a th:href="@{/index(page=${status.index}, keyword=${keyword}, category=${category})}"
+                           th:text="${status.index}"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -36,6 +36,12 @@ public class ContactSpringMvcApplication implements CommandLineRunner {
 
 		contactRepository.save(new Contact(null, "Alejandra", "Ramirez", "alera@gmail.com", "065254565", "Allee dAncely" ));
 		contactRepository.save(new Contact(null, "Frédéric", "BEC", "fred@gmail.com", "085555565", "Muret" ));
+		contactRepository.save(new Contact(null, "Claire", "Avila", "claire@gmail.com", "05555965", "Saint-Geours" ));
+		contactRepository.save(new Contact(null, "Arthur", "Gibert", "arthur@gmail.com", "085558565", "Saint-Geourg" ));
+		contactRepository.save(new Contact(null, "Donovan", "Seulin", "donovan@gmail.com", "05578965", "Saint-Geours" ));
+		contactRepository.save(new Contact(null, "Max", "Thiroux", "max@gmail.com", "082228565", "Saint-Geourg" ));
+		contactRepository.save(new Contact(null, "Gilles", "Quodbach", "gilles@gmail.com", "085554465", "Saint-Geourg" ));
+
 
 		contactRepository.findAll().forEach(a -> logger.info(a.toString()));
 		System.out.println("contactRepository" + contactRepository.toString());
