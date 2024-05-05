@@ -12,44 +12,13 @@
 <div layout:fragment="content">
     <div class="container">
         <div class="panel panel-primary">
-            <div class="panel-heading">Liste des contacts</div>
+            <div class="panel-heading">Aperçu de l'app</div>
 
             <div class="panel-body">
-                <form th:action="@{/index}" method="get">
-                    <label>Last Name</label>
-                    <input type="text" name="keyword" th:value="${keyword}">
-                    <button type="submit" class="btn btn-primary">Search</button>
-                </form>
-            </div>
+                <img src="images/list-contacts.jpg" alt="List Contacts ">
 
-            <div class="panel-body">
-                <table class="table">
-                    <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Last name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Address</th>
-                    </tr>
-                    <tr th:each="c:${listContact}">
-                        <td th:text="${c.id}"></td>
-                        <td th:text="${c.name}"></td>
-                        <td th:text="${c.lastName}"></td>
-                        <td th:text="${c.email}"></td>
-                        <td th:text="${c.phone}"></td>
-                        <td th:text="${c.address}"></td>
-                        <td>
-                            <a class="btn btn-danger" onclick="return confirm('Etes vous sur?')" th:href="@{/delete(id=${c.id}, page=${currentPage}, keyword=${keyword})}">Delete</a>
-                        </td>
-                    </tr>
-                </table>
+                <a type="submit" class="btn btn-success">Je m'inscris</a>
 
-                <ul class="nav nav-pills">
-                    <li th:class="${currentPage==status.index}?'active':''" th:each="page,status:${pages}">
-                        <a th:href="@{/index(page=${status.index}, keyword=${keyword})}" th:text="${status.index}"></a>
-                    </li>
-                </ul>
             </div>
             </div>
         </div>

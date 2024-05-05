@@ -44,6 +44,18 @@ public class ContactController {
         return "index";
     }
 
+    @GetMapping("/contactsList")
+    public String contactsList (Model model, @RequestParam(name= "page", defaultValue = "0") int page,
+                        @RequestParam(name="keyword", defaultValue = "") String kw) {
+        Page<Contact> allContacts = contactRepository.findByLastNameContains(kw, PageRequest.of(page, 5));
+        model.addAttribute("listContact", allContacts.getContent());
+        model.addAttribute("pages", new int[allContacts.getTotalPages()]);
+        model.addAttribute("currentPage", page);
+        model.addAttribute("keyword", kw);
+
+        return "contactsList";
+    }
+
 
     @GetMapping("/contact")
     public String contact(Model model) {
