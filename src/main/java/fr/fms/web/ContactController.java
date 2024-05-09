@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.naming.Binding;
 import javax.validation.Valid;
@@ -20,6 +21,7 @@ import java.util.Optional;
 public class ContactController {
     private final ContactRepository contactRepository;
     String contactString = "contact";
+    private RedirectAttributes redirectAttributes;
 
     @Autowired
     public ContactController(ContactRepository contactRepository) {
@@ -60,7 +62,7 @@ public class ContactController {
     @GetMapping("/contact")
     public String contact(Model model) {
         model.addAttribute("contact", new Contact());
-        return contactString;
+        return "contact";
     }
 
     @GetMapping("/delete")
@@ -69,13 +71,23 @@ public class ContactController {
         return "redirect:/index?page="+page+"&keyword="+keyword;
     }
 
-   /* @GetMapping("/save")
-    public String save (@Valid @ModelAttribute("contact")BindingResult bindingResult, Model model) {
-      Contact contact = contactRepository.findById(Long);
-      contactRepository.save(contact);
-      return "redirect:/index";
-        }*/
+
+   @PostMapping("/save")
+    public String save (Model model, @Valid Contact contact , BindingResult bindingResult) {
+      if(bindingResult.hasErrors()) return "contact";
+        contactRepository.save(contact);
+      //redirectAttributes.addFlashAttribute("message", "Action réussie !");
+      return "redirect:/contactsList";
+        }
     }
+
+      /*@GetMapping("/update")
+    public String update(Model model, Long id) {
+       Optional<Contact> contactToUpdate = contactRepository.findById(id);
+       Contact contact = contactToUpdate.orElse(null);
+       model.addAttribute(contactString, contact);
+       return "update";
+    }*/
 
 
 
