@@ -58,6 +58,10 @@ public class ContactController {
         return "contactsList";
     }
 
+    @GetMapping("/")
+    public String home(){
+        return "redirect:/index";
+    }
 
     @GetMapping("/contact")
     public String contact(Model model) {
@@ -80,6 +84,7 @@ public class ContactController {
       return "redirect:/contactsList";
         }
     }
+
 
       /*@GetMapping("/update")
     public String update(Model model, Long id) {

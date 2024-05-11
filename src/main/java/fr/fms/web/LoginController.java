@@ -1,5 +1,5 @@
 package fr.fms.web;
-
+/*
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.security.core.Authentication;
@@ -16,7 +16,7 @@ public class LoginController {
      * Méthode en GET /login pour la gestion du formulaire d'authentification géré ensuite par Spring security
      * @return login.html
      */
-    @GetMapping("/login")
+ /*   @GetMapping("/login")
     public String login() {
         return "login";
     }
@@ -27,7 +27,7 @@ public class LoginController {
      * @param response
      * @return login.html
      */
-    @GetMapping("/logout")
+ /*   @GetMapping("/logout")
     public String logout(HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null){
@@ -40,26 +40,27 @@ public class LoginController {
      * Méthode en GET pour l'url racine de l'application
      * @return redirection vers index.html
      */
-    @RequestMapping("/")
+ /*   @RequestMapping("/")
     public String home() {
         return "redirect:/index";
     }
-
+/*
     /**
      * Méthode en GET pour /403 pour interdire l'accès vers une ressource demandée
      * @return 403.html
      */
-    @GetMapping("/403")
+  /*  @GetMapping("/403")
     public String accessDenied() {
         return "error/403";
     }
-
+*/
     /**
      * Méthode en GET pour /404 pour indiquer que la ressource demandée n'existe pas
      * @return 404.html
      */
-    @GetMapping("/error")
+  /*  @GetMapping("/error")
     public String error() {
         return "error/404";
     }
 }
+*/

@@ -1,5 +1,6 @@
 package fr.fms.entities;
 
+/*
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,13 +15,13 @@ import java.util.Collection;
 public class Role implements Serializable {
     /**
      * role id
-     * */
-    @Id
+ /*    * */
+  /*  @Id
     private String name;
     /**
      * users list
      * */
-    @ManyToMany(mappedBy = "roles")
+ /*   @ManyToMany(mappedBy = "roles")
     @ToString.Exclude
     private Collection<User> users;
-}
+}*/
