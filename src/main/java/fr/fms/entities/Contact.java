@@ -24,23 +24,23 @@ public class Contact implements Serializable {
     private Long id;
 
     @NotNull
-    //@Size(min = 10, max = 50)
+    @Size(min = 2, max = 25)
     private String name;
 
     @NotNull
-    //@Size(min = 10, max = 50)
+    @Size(min = 2, max = 25)
     private String lastName;
 
     @NotNull
-    //@Size(min = 10, max = 50)
+    @Size(min = 5, max = 25)
     private String email;
 
     @NotNull
-    //@Size(min = 10, max = 50)
+    @Size(min = 5, max = 25)
     private String phone;
 
     @NotNull
-    //@Size(min = 10, max = 50)
+    @Size(min = 5, max = 100)
     private String address;
 }
 

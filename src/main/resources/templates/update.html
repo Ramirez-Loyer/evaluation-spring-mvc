@@ -1,15 +1,53 @@
 <!DOCTYPE html>
-<html lang="en" layout:decorate="layout"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      xmlns:th="http://thymeleaf.org">
-
+<html lang="fr" layout:decorate="layout"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security5">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Modifier un contact</title>
+    <meta charset="UTF-8">
+    <title>Modifier un contact</title>
 </head>
-
 <body>
-<p>update</p>
-</body>
+<div layout:fragment="content">
+    <div class="col-md-6 col-xs-8">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Modifier le contact</div>
+            <div class="panel-body">
+                <form th:action="@{/save}" method="post">
+                    <div class="form-group">
+                        <label class="control-label"> Name : </label>
+                        <input class="form-control" name="name" th:value="${contact.name}" type="text">
+                        <span class="text-danger" th:errors="${contact.name}"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label"> Last name : </label>
+                        <input class="form-control" name="lastName" th:value="${contact.lastName}" type="text">
+                        <span class="text-danger" th:errors="${contact.lastName}"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label"> Email : </label>
+                        <input class="form-control" name="email" th:value="${contact.email}" type="text">
+                        <span class="text-danger" th:errors="${contact.email}"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label"> Téléphone : </label>
+                        <input class="form-control" name="phone" th:value="${contact.phone}" type="text">
+                        <span class="text-danger" th:errors="${contact.phone}"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label"> Adresse : </label>
+                        <input class="form-control" name="address" th:value="${contact.address}" type="text">
+                        <span class="text-danger" th:errors="${contact.address}"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label"> Catégorie : </label>
+                    </div>
+                    <button class="btn btn-primary" type="submit" >Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
+</body>
 </html>

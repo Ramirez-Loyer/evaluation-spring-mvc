@@ -42,7 +42,7 @@
             <td th:text="${c.address}"></td>
             <td th:text="${c.name}"></td>
             <td>
-              <a class="btn btn-success"}>Modifier</a>
+              <a class="btn btn-success" th:href="@{/update(id=${c.id})}"}>Modifier</a>
             </td>
             <td>
               <a class="btn btn-danger" onclick="return confirm('Etes vous sur?')" th:href="@{/delete(id=${c.id}, page=${currentPage}, keyword=${keyword})}">Supprimer</a>

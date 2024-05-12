@@ -78,23 +78,24 @@ public class ContactController {
 
    @PostMapping("/save")
     public String save (Model model, @Valid Contact contact , BindingResult bindingResult) {
-      if(bindingResult.hasErrors()) return "contact";
+      if(bindingResult.hasErrors()) {
+          return "contact";
+      }
         contactRepository.save(contact);
       //redirectAttributes.addFlashAttribute("message", "Action réussie !");
       return "redirect:/contactsList";
         }
+
+
+
+    @GetMapping("/update")
+    public String update(Model model, @RequestParam(name="id") Long id) {
+      Contact contact= contactRepository.findById(id).get();
+        model.addAttribute("contact", contact);
+       return "update";
     }
 
-
-      /*@GetMapping("/update")
-    public String update(Model model, Long id) {
-       Optional<Contact> contactToUpdate = contactRepository.findById(id);
-       Contact contact = contactToUpdate.orElse(null);
-       model.addAttribute(contactString, contact);
-       return "update";
-    }*/
-
-
+}
 
 
 
