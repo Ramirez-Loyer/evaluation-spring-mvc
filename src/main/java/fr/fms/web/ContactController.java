@@ -12,10 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.naming.Binding;
 import javax.validation.Valid;
-import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class ContactController {
@@ -72,18 +69,18 @@ public class ContactController {
     @GetMapping("/delete")
     public String delete(Long id, int page, String keyword) {
         contactRepository.deleteById(id);
-        return "redirect:/index?page="+page+"&keyword="+keyword;
+        return "redirect:/contactsList?page="+page+"&keyword="+keyword;
     }
 
 
-   @PostMapping("/save")
+   @PostMapping("/saveContact")
     public String save (Model model, @Valid Contact contact , BindingResult bindingResult) {
       if(bindingResult.hasErrors()) {
           return "contact";
       }
         contactRepository.save(contact);
-      //redirectAttributes.addFlashAttribute("message", "Action réussie !");
-      return "redirect:/contactsList";
+      //return "redirect:/contactsList?keyword="+contact.getName();
+       return "redirect:/contactsList?keyword"+contact.getName();
         }
 
 
@@ -94,6 +91,10 @@ public class ContactController {
         model.addAttribute("contact", contact);
        return "update";
     }
+
+
+
+
 
 }
 

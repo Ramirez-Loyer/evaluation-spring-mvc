@@ -37,8 +37,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 }
 
 
-
 /*
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -48,17 +48,25 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import javax.sql.DataSource;
+
 @Configuration
 @EnableWebSecurity
 
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    DataSource dataSource;
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         PasswordEncoder pe = passwordEncoder();
-        auth.inMemoryAuthentication().withUser("alejandra").password(pe.encode("12345")).roles("USER", "VISITOR");
-        auth.inMemoryAuthentication().withUser("coco").password(pe.encode("12345")).roles("USER");
-        auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder());
+        auth.jdbcAuthentication()
+                .dataSource(dataSource)
+                .usersByUsernameQuery("select username as principal, password as credentials, active from T_Users where username=?")
+                .authoritiesByUsernameQuery("select username as principal, role as role from T_Users_Roles where username=?")
+                .rolePrefix("ROLE_")
+                .passwordEncoder(passwordEncoder());
     }
 
     @Bean

@@ -4,9 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+
 import java.io.Serializable;
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 
@@ -23,23 +24,23 @@ public class Contact implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
+    @NotEmpty
     @Size(min = 2, max = 25)
     private String name;
 
-    @NotNull
+    @NotEmpty
     @Size(min = 2, max = 25)
     private String lastName;
 
-    @NotNull
-    @Size(min = 5, max = 25)
+    @NotEmpty
+    @Size(min = 5, max = 50)
     private String email;
 
-    @NotNull
+    @NotEmpty
     @Size(min = 5, max = 25)
     private String phone;
 
-    @NotNull
+    @NotEmpty
     @Size(min = 5, max = 100)
     private String address;
 }

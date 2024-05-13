@@ -10,6 +10,7 @@ import fr.fms.entities.Contact;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.boot.CommandLineRunner;
@@ -61,6 +62,7 @@ public class ContactSpringMvcApplication implements CommandLineRunner {
 		System.out.println("contactRepository" + contactRepository.toString());
 
 	}
+
 }
 		//generateData(); //pour les rôles
 	//}

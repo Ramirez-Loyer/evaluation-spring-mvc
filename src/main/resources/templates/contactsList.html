@@ -31,7 +31,7 @@
             <th>Email</th>
             <th>Phone</th>
             <th>Address</th>
-            <th>Catégorie</th>
+
           </tr>
           <tr th:each="c:${listContact}">
             <td th:text="${c.id}"></td>
@@ -40,7 +40,6 @@
             <td th:text="${c.email}"></td>
             <td th:text="${c.phone}"></td>
             <td th:text="${c.address}"></td>
-            <td th:text="${c.name}"></td>
             <td>
               <a class="btn btn-success" th:href="@{/update(id=${c.id})}"}>Modifier</a>
             </td>

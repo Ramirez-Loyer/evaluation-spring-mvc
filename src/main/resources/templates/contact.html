@@ -13,7 +13,7 @@
         <div class="panel panel-primary">
             <div class="panel-heading">Ajouter un nouveau contact</div>
             <div class="panel-body">
-                <form th:action="@{/save}" method="post">
+                <form th:action="@{/saveContact}" method="post">
                     <div class="form-group">
                         <label class="control-label"> Name : </label>
                         <input class="form-control" name="name" th:value="${contact.name}" type="text">
