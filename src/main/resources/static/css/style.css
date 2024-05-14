@@ -30,3 +30,9 @@
     margin-top: 15px;
     margin-bottom: 15px;
 }
+
+.centered-image {
+    max-width: 100%;
+    height: auto;
+    padding : 20px;
+}
